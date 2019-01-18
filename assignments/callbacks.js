@@ -59,19 +59,14 @@ function giveBoolResult(boolParameter) {
 function contains(item, list, cb) {
   // contains checks if an item is present inside of the given array/list.
   // Pass true to the callback if it is, otherwise pass false.
-  let bool = false;
   for (let i = 0; i < list.length; i++) {
     if (list[i] === item) {
-      bool = true;
-      return cb(bool);
-    }
-    else {
-      return cb(bool);
+      return true;
     }
   }
+  return false; //RETURN false needs to be outside the for loop and if statement, otherwise whenever the first index value is not equal to item being checked it will return false right away and not check the other items
 }
-
-contains('Pencil', items, giveBoolResult);
+console.log(contains('yo-yo', items, giveBoolResult));
 
 /* STRETCH PROBLEM */
 
