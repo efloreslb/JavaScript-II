@@ -83,11 +83,12 @@ console.log(largeShirts);
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
 
-let ticketPriceTotal = runners.reduce(function (total, runner) {
+let ticketPriceTotal = runners.reduce(function (total, runner) { //(accumulator,  currentValue)
     return total + runner.donation;
 }, 0);
 console.log(ticketPriceTotal);
 
+// let tickerPriceTotal = [];
 // runners.forEach(function(runner) {
 //     ticketPriceTotal.push(runner.donation);
 // });
@@ -100,8 +101,37 @@ console.log(ticketPriceTotal);
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
-// Problem 1
+// Problem 1 - The companies participating will receive certificates of appreciation. Make an array of all the companies participating and alphabetize the array.
 
-// Problem 2
+let companyList = []
+runners.forEach(function(runner) {
+    companyList.push(runner.company_name);
+});
+companyList.sort();
+console.log(companyList);
 
-// Problem 3
+// Problem 2 - Special recognition will go to student and government-employed runners. Find all the runners that have .edu or .gov email addresses. Display the number of runners and the array.
+
+let emailList = [];
+runners.filter(function(runner) {
+    if (runner.email.endsWith("edu") || runner.email.endsWith("gov")) {
+        emailList.push(runner);
+    }
+})
+console.log(emailList.length, emailList);
+
+
+// Problem 3 The local community center wants to host the event again but they don't want to invite the smallest donation contributors. Find the runners who donated less than 50 so they do not receive an invitation for the next event. Also find the total of the smallest donations.
+
+let smallDonators = [];
+runners.filter(function(runner) {
+    if (runner.donation < 50) {
+        smallDonators.push(runner);
+    }
+})
+let smallDonationTotal = smallDonators.reduce(function (total, runner) {
+    return total + runner.donation;
+}, 0);
+
+console.log(smallDonationTotal);
+console.log(smallDonators);
