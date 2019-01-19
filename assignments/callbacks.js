@@ -25,7 +25,7 @@ const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
 function giveResult(parameter) {
   let result = parameter;
   return 'The result is ' + result;
-}
+} 
 /*        CB Function ends      */
 
 function getLength(arr, cb) {
